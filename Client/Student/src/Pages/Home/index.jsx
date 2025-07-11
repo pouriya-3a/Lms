@@ -5,6 +5,7 @@ import Header from './Header'
 import Courses from './Courses'
 import Companies from './Companies'
 import Comments from './Comments'
+import Footer from '../../Components/Footer'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Companies />
       <Courses />
       <Comments />
+      <Footer />
     </Stack>
   )
 }

@@ -22,7 +22,7 @@ export default function Course({title , image , id , rating , category , price})
             <Typography variant="subtitle2" fontWeight={'bold'}>{price}</Typography>
         </CardContent>
         <CardActions>
-            <Link to={`/course/${id}`}><Button>Read More ...</Button></Link>
+            <Link to={id != 0 ? `/course/${id}` : '/'}><Button>Read More ...</Button></Link>
         </CardActions>
       </Card>
     </Grid>

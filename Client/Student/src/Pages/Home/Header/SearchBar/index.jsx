@@ -10,7 +10,7 @@ export default function SearchBar() {
     const handleSubmit = async(e)=>{
         e.preventDefault()
         setLoading(true)
-        navigate(`courses-list/${input}`)
+        navigate(`course-list/${input}`)
         setInput('')
         setLoading(false)
     }
@@ -35,7 +35,7 @@ export default function SearchBar() {
         fullWidth
         size="small"
         placeholder="search for courses ..."
-      />{" "}
+      />
       <Button disabled={loading} sx={{ px: 5 }} type="submit" variant="contained">
         Search
       </Button>

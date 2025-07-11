@@ -16,8 +16,10 @@ import {
 import React, { useContext, useState } from "react";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { authContext } from "../../Context/AuhtContext/AuthContext";
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
-  const [loading , setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const { token, handleToken } = useContext(authContext);
   const [fields, setFields] = useState({ username: "", password: "" });
   const [showLogin, setShowLogin] = useState(false);
@@ -26,8 +28,8 @@ export default function Navbar() {
   };
 
   const handleLog = async (e) => {
-    setLoading(true)
-    console.log('hi')
+    setLoading(true);
+    console.log("hi");
     e.preventDefault();
     const res = await fetch("https://fakestoreapi.com/auth/login", {
       method: "POST",
@@ -38,8 +40,8 @@ export default function Navbar() {
     });
     const data = await res.json();
     data ? handleToken(data.token) : alert("some things Wrong ...");
-    setLoading(false)
-    setShowLogin(false)
+    setLoading(false);
+    setShowLogin(false);
   };
   return (
     <>
@@ -57,30 +59,33 @@ export default function Navbar() {
                 Edemy
               </Typography>
               <Stack spacing={4} direction={"row"}>
-                <Button sx={{ color: "gray" }} variant="text">
-                  Add Courses
-                </Button>
-                <Button sx={{ color: "gray" }} variant="text">
-                  Courses
-                </Button>
                 {token ? (
-                  <Button
-                    onClick={() => handleToken(null)}
-                    variant="contained"
-                    sx={{
-                      bgcolor: "red",
-                      borderRadius: 10,
-                      px: 3,
-                      py: 1,
-                      color: "white",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Log Out
-                  </Button>
+                  <>
+                    <Button sx={{ color: "gray" , display:{xs:'none' , md:'inline-block'} }} variant="text">
+                      Add Courses
+                    </Button>
+                    <Link to={'/course-list'}>
+                    <Button sx={{ color: "gray" ,display:{xs:'none' , md:'inline-block'} }} variant="text">
+                      Courses
+                    </Button></Link>
+                    <Button
+                      onClick={() => handleToken(null)}
+                      variant="contained"
+                      sx={{
+                        bgcolor: "red",
+                        borderRadius: 10,
+                        px: 3,
+                        py: 1,
+                        color: "white",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Log Out
+                    </Button>
+                  </>
                 ) : (
                   <Button
-                  disabled={loading}
+                    disabled={loading}
                     onClick={() => setShowLogin(true)}
                     variant="contained"
                     sx={{ color: "white", borderRadius: 10, px: 3, py: 1, fontWeight: "bold" }}
@@ -97,11 +102,32 @@ export default function Navbar() {
         <DialogTitle>Login</DialogTitle>
         <Box onSubmit={handleLog} component={"form"}>
           <DialogContent>
-            <TextField sx={{mx:1}} size="small" name="username" type="username" onChange={handleChange} label="username" />
-            <TextField sx={{mx:1}} size="small" name="password" type="password" onChange={handleChange} label="password" />
+            <TextField
+              sx={{ mx: 1 }}
+              size="small"
+              name="username"
+              type="username"
+              onChange={handleChange}
+              label="username"
+            />
+            <TextField
+              sx={{ mx: 1 }}
+              size="small"
+              name="password"
+              type="password"
+              onChange={handleChange}
+              label="password"
+            />
           </DialogContent>
           <DialogActions>
-            <Button disabled={loading} color="error" variant="outlined" onClick={()=>setShowLogin(false)}>Cancel</Button>
+            <Button
+              disabled={loading}
+              color="error"
+              variant="outlined"
+              onClick={() => setShowLogin(false)}
+            >
+              Cancel
+            </Button>
             <Button disabled={loading} type="submit" variant="contained">
               Login
             </Button>
