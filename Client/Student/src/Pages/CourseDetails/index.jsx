@@ -1,10 +1,10 @@
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 
 export default function CourseDetails() {
   return (
-    <div>
+    <Box>
       <Typography variant='h5'>CourseDetails Page</Typography>
-    </div>
+    </Box>
   )
 }

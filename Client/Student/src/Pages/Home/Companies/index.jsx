@@ -20,6 +20,7 @@ export default function Companies() {
       <Stack
       direction={'row'}
         sx={{
+          gap:'16px' ,
             justifyContent:'space-between' ,
           flexWrap: "wrap",
         }}

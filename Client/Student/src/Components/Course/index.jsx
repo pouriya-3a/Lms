@@ -12,17 +12,17 @@ export default function Course({title , image , id , rating , category , price})
   return (
     <Grid p={3} size={{xs:12 , sm:6 , md:4 , lg:3}}>
       <Card sx={{display:'flex' , justifyContent:'space-between',flexDirection:'column' , height:'100%'}}>
-        <CardMedia sx={{height:'50%'}}>
+        <CardMedia sx={{height:'50%',maxHeight:'200px'}}>
           <ImgStyled src={image} alt={title} />
         </CardMedia>
         <CardContent>
           <Typography variant="h6">{title}</Typography>
             <Typography variant="subtitle2">{category}</Typography>
-            <Rating value={rating.rate} />
+            <Rating value={rating} />
             <Typography variant="subtitle2" fontWeight={'bold'}>{price}</Typography>
         </CardContent>
         <CardActions>
-            <Link to={`course/${id}`}><Button>Read More ...</Button></Link>
+            <Link to={`/course/${id}`}><Button>Read More ...</Button></Link>
         </CardActions>
       </Card>
     </Grid>
