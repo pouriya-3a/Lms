@@ -36,5 +36,5 @@ export default function Comments() {
       </Card>
     </Grid>
   ));
-  return <Grid container>{courses ? items.slice(0,3) :<Typography textAlign={'center'}>Loading ...</Typography>}</Grid>;
+  return <Grid sx={{mt:10}} container>{courses ? items.slice(0,3) :<Typography textAlign={'center'}>Loading ...</Typography>}</Grid>;
 }
